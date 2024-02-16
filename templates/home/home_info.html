@@ -1,0 +1,291 @@
+{% load static %}
+<div class="movie-items">
+    <div class="container">
+        <div class="row ipad-width">
+            <div class="col-md-8">
+                <div class="title-hd">
+                    <h2>in theater</h2>
+                    <a href="{% url 'MovieGrid' %}" class="viewall">View all <i class="ion-ios-arrow-right"></i></a>
+                </div>
+                <div class="tabs">
+                    <ul class="tab-links">
+                        <li><a href="#now_playing_movie">#Now Playing</a></li>
+                        <li><a href="#popular_movie"> #Popular</a></li>
+                        <li><a href="#top_rated_movie"> #Top rated </a></li>
+                        <li><a href="#coming_soon_movie"> #Coming soon</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div id="now_playing_movie" class="tab active">
+                            <div class="row">
+                                <div class="slick-multiItem">
+                                    {% for now_playing in now_playing_movies|slice:":8" %}
+                                        <div class="slide-it">
+                                            <div class="movie-item">
+                                                <div class="mv-img">
+                                                    <img src="https://image.tmdb.org/t/p/w500/{{ now_playing.poster_path }}"
+                                                         alt="" width="185" height="284">
+                                                </div>
+                                                <div class="hvr-inner">
+                                                    <a href="{% url 'MovieDetails' now_playing.id %}"> Read more <i
+                                                            class="ion-android-arrow-dropright"></i> </a>
+                                                </div>
+                                                <div class="title-in">
+                                                    <h6>
+                                                        <a href="{% url 'MovieDetails' now_playing.id %}">{{ now_playing.title }}</a>
+                                                    </h6>
+                                                    <p>
+                                                        <i class="ion-android-star"></i><span>{{ now_playing.vote_average }}</span>
+                                                        /10</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                        <div id="popular_movie" class="tab">
+                            <div class="row">
+                                <div class="slick-multiItem">
+                                    {% for popular_movie in popular_movies|slice:":8" %}
+                                        <div class="slide-it">
+                                            <div class="movie-item">
+                                                <div class="mv-img">
+                                                    <img src="https://image.tmdb.org/t/p/w500/{{ popular_movie.poster_path }}"
+                                                         alt="" width="185"
+                                                         height="284">
+                                                </div>
+                                                <div class="hvr-inner">
+                                                    <a href="{% url 'MovieDetails' popular_movie.id %}"> Read more <i
+                                                            class="ion-android-arrow-dropright"></i> </a>
+                                                </div>
+                                                <div class="title-in">
+                                                    <h6>
+                                                        <a href="{% url 'MovieDetails' popular_movie.id %}">{{ popular_movie.title }}</a>
+                                                    </h6>
+                                                    <p>
+                                                        <i class="ion-android-star"></i><span>{{ popular_movie.vote_average }}</span>
+                                                        /10</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                        <div id="top_rated_movie" class="tab">
+                            <div class="row">
+                                <div class="slick-multiItem">
+                                    {% for top_rated_movie in top_rated_movies|slice:":8" %}
+                                        <div class="slide-it">
+                                            <div class="movie-item">
+                                                <div class="mv-img">
+                                                    <img src="https://image.tmdb.org/t/p/w500/{{ top_rated_movie.poster_path }}"
+                                                         alt="" width="185"
+                                                         height="284">
+                                                </div>
+                                                <div class="hvr-inner">
+                                                    <a href="{% url 'MovieDetails' top_rated_movie.id %}"> Read more <i
+                                                            class="ion-android-arrow-dropright"></i> </a>
+                                                </div>
+                                                <div class="title-in">
+                                                    <h6>
+                                                        <a href="{% url 'MovieDetails' top_rated_movie.id %}">{{ top_rated_movie.title }}</a>
+                                                    </h6>
+                                                    <p>
+                                                        <i class="ion-android-star"></i><span>{{ top_rated_movie.vote_average }}</span>
+                                                        /10</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                        <div id="coming_soon_movie" class="tab">
+                            <div class="row">
+                                <div class="slick-multiItem">
+                                    {% for upcoming_movie in upcoming_movies|slice:":8" %}
+                                        <div class="slide-it">
+                                            <div class="movie-item">
+                                                <div class="mv-img">
+                                                    <img src="https://image.tmdb.org/t/p/w500/{{ upcoming_movie.poster_path }}"
+                                                         alt="" width="185"
+                                                         height="284">
+                                                </div>
+                                                <div class="hvr-inner">
+                                                    <a href="{% url 'MovieDetails' upcoming_movie.id %}"> Read more <i
+                                                            class="ion-android-arrow-dropright"></i> </a>
+                                                </div>
+                                                <div class="title-in">
+                                                    <h6>
+                                                        <a href="{% url 'MovieDetails' upcoming_movie.id %}">{{ upcoming_movie.title }}</a>
+                                                    </h6>
+                                                    <p>
+                                                        <i class="ion-android-star"></i><span>{{ upcoming_movie.vote_average }}</span>
+                                                        /10</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="title-hd">
+                    <h2>on tv</h2>
+                    <a href="{% url 'TVGrid' %}" class="viewall">View all <i class="ion-ios-arrow-right"></i></a>
+                </div>
+                <div class="tabs">
+                    <ul class="tab-links-2">
+                        <li><a href="#airing_today_tv">#Airing Today</a></li>
+                        <li><a href="#on_the_air"> #On The Air</a></li>
+                        <li><a href="#popular_tv"> #Popular </a></li>
+                        <li><a href="#top_rated_tv"> #Top rated </a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div id="airing_today_tv" class="tab">
+                            <div class="row">
+                                <div class="slick-multiItem">
+                                    {% for airing_today_tv_show in airing_today_tv|slice:":8" %}
+                                        <div class="slide-it">
+                                            <div class="movie-item">
+                                                <div class="mv-img">
+                                                    <img src="https://image.tmdb.org/t/p/w500/{{ airing_today_tv_show.poster_path }}"
+                                                         alt="" width="185"
+                                                         height="284">
+                                                </div>
+                                                <div class="hvr-inner">
+                                                    <a href="{% url 'MovieDetails' airing_today_tv_show.id %}"> Read
+                                                        more <i
+                                                                class="ion-android-arrow-dropright"></i> </a>
+                                                </div>
+                                                <div class="title-in">
+                                                    <h6>
+                                                        <a href="{% url 'MovieDetails' airing_today_tv_show.id %}">{{ airing_today_tv_show.title }}</a>
+                                                    </h6>
+                                                    <p>
+                                                        <i class="ion-android-star"></i><span>{{ airing_today_tv_show.vote_average }}</span>
+                                                        /10</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                        <div id="on_the_air" class="tab active">
+                            <div class="row">
+                                <div class="slick-multiItem">
+                                    {% for on_the_air_tv_show in on_the_air_tv|slice:":8" %}
+                                        <div class="slide-it">
+                                            <div class="movie-item">
+                                                <div class="mv-img">
+                                                    <img src="https://image.tmdb.org/t/p/w500/{{ on_the_air_tv_show.poster_path }}"
+                                                         alt="" width="185"
+                                                         height="284">
+                                                </div>
+                                                <div class="hvr-inner">
+                                                    <a href="{% url 'MovieDetails' on_the_air_tv_show.id %}"> Read more
+                                                        <i
+                                                                class="ion-android-arrow-dropright"></i> </a>
+                                                </div>
+                                                <div class="title-in">
+                                                    <h6>
+                                                        <a href="{% url 'MovieDetails' on_the_air_tv_show.id %}">{{ on_the_air_tv_show.title }}</a>
+                                                    </h6>
+                                                    <p>
+                                                        <i class="ion-android-star"></i><span>{{ on_the_air_tv_show.vote_average }}</span>
+                                                        /10</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                        <div id="popular_tv" class="tab">
+                            <div class="row">
+                                <div class="slick-multiItem">
+                                    {% for popular_tv_show in popular_tv|slice:":8" %}
+                                        <div class="slide-it">
+                                            <div class="movie-item">
+                                                <div class="mv-img">
+                                                    <img src="https://image.tmdb.org/t/p/w500/{{ popular_tv_show.poster_path }}"
+                                                         alt="" width="185"
+                                                         height="284">
+                                                </div>
+                                                <div class="hvr-inner">
+                                                    <a href="{% url 'MovieDetails' popular_tv_show.id %}"> Read more <i
+                                                            class="ion-android-arrow-dropright"></i> </a>
+                                                </div>
+                                                <div class="title-in">
+                                                    <h6>
+                                                        <a href="{% url 'MovieDetails' popular_tv_show.id %}">{{ popular_tv_show.title }}</a>
+                                                    </h6>
+                                                    <p>
+                                                        <i class="ion-android-star"></i><span>{{ popular_tv_show.vote_average }}</span>
+                                                        /10</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                        <div id="top_rated_tv" class="tab">
+                            <div class="row">
+                                <div class="slick-multiItem">
+                                    {% for top_rated_tv_show in top_rated_tv|slice:":8" %}
+                                        <div class="slide-it">
+                                            <div class="movie-item">
+                                                <div class="mv-img">
+                                                    <img src="https://image.tmdb.org/t/p/w500/{{ top_rated_tv_show.poster_path }}"
+                                                         alt="" width="185"
+                                                         height="284">
+                                                </div>
+                                                <div class="hvr-inner">
+                                                    <a href="{% url 'MovieDetails' top_rated_tv_show.id %}"> Read more
+                                                        <i
+                                                                class="ion-android-arrow-dropright"></i> </a>
+                                                </div>
+                                                <div class="title-in">
+                                                    <h6>
+                                                        <a href="{% url 'MovieDetails' top_rated_tv_show.id %}">{{ top_rated_tv_show.title }}</a>
+                                                    </h6>
+                                                    <p>
+                                                        <i class="ion-android-star"></i><span>{{ top_rated_tv_show.vote_average }}</span>
+                                                        /10</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="sidebar">
+                    <div class="ads">
+                        <img src="{% static 'images/uploads/ads1.png' %}" alt="" width="336" height="296">
+                    </div>
+                    <div class="celebrities">
+                        <h4 class="sb-title">Spotlight Celebrities</h4>
+                        {% for person in person_popular|slice:":4" %}
+                            <div class="celeb-item">
+                                <a href="{% url 'PersonDetails' person.id %}"><img src="https://image.tmdb.org/t/p/w500/{{ person.profile_path }}" alt="" width="70" height="70"></a>
+                                <div class="celeb-author">
+                                    <h6><a href="{% url 'PersonDetails' person.id %}">{{ person.name }}</a></h6>
+                                    <span>{{ person.known_for_department }}</span>
+                                </div>
+                            </div>
+                        {% endfor %}
+                        <a href="{% url 'PersonGrid' %}" class="btn">See all celebrities<i class="ion-ios-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

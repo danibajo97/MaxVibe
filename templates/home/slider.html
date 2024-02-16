@@ -1,0 +1,35 @@
+{% load get_movie_gender %}
+
+<div class="slider movie-items">
+    <div class="container">
+        <div class="row">
+            <div class="social-link">
+                <p>Follow us: </p>
+                <a href="#"><i class="ion-social-facebook"></i></a>
+                <a href="#"><i class="ion-social-twitter"></i></a>
+                <a href="#"><i class="ion-social-googleplus"></i></a>
+                <a href="#"><i class="ion-social-youtube"></i></a>
+            </div>
+            <div class="slick-multiItemSlider">
+                {% for trending_movie in trending_movies|slice:":12" %}
+                    <div class="movie-item">
+                        <div class="mv-img">
+                            <a href="{% url 'MovieDetails' trending_movie.id %}"><img
+                                    src="https://image.tmdb.org/t/p/w500/{{ trending_movie.poster_path }}" alt=""
+                                    width="285" height="437"></a>
+                        </div>
+                        <div class="title-in">
+                            <div class="cate">
+                                {% for id in trending_movie.genre_ids %}
+                                    <span class="blue"><a href="#">{{ id|get_movie_genre_name }}</a></span>
+                                {% endfor %}
+                            </div>
+                            <h6><a href="{% url 'MovieDetails' trending_movie.id %}">{{ trending_movie.title }}</a></h6>
+                            <p><i class="ion-android-star"></i><span>{{ trending_movie.vote_average }}</span> /10</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>

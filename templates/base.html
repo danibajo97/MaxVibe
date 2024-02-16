@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<!--[if IE 7]>
+<html class="ie ie7 no-js" lang="en-US">
+<![endif]-->
+<!--[if IE 8]>
+<html class="ie ie8 no-js" lang="en-US">
+<![endif]-->
+<!--[if !(IE 7) | !(IE 8)  ]><!-->
+<html lang="en" class="no-js">
+<!-- homev206:52-->
+<head>
+    <!-- Basic need -->
+    <title>MaxVibe</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="">
+    <link rel="profile" href="#">
+    <!--Google Font-->
+    <link rel="stylesheet" href='http://fonts.googleapis.com/css?family=Dosis:400,700,500|Nunito:300,400,600'/>
+    <!-- Mobile specific meta -->
+    <meta name=viewport content="width=device-width, initial-scale=1">
+    <meta name="format-detection" content="telephone-no">
+    <!-- CSS files -->
+    {% block css_files %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/plugins.css' %}">
+    {% endblock css_files %}
+    {% block extra_css %}{% endblock extra_css %}
+</head>
+<body>
+<!--preloading-->
+{% include 'preloader.html' %}
+<!--end of preloading-->
+<!--login form popup-->
+{% include 'login.html' %}
+<!--end of login form popup-->
+<!--signup form popup-->
+{% include 'signup.html' %}
+<!--end of signup form popup-->
+<!-- BEGIN | Header -->
+{% include 'navbar.html' %}
+<!-- END | Header -->
+{% block content %}{% endblock content %}
+<!-- footer section-->
+{% include 'footer.html' %}
+<!-- end of footer section-->
+<!-- end of footer v2 section-->
+{% block js_files %}
+<script src="{% static 'js/jquery.js' %}"></script>
+<script src="{% static 'js/plugins.js' %}"></script>
+<script src="{% static 'js/plugins2.js' %}"></script>
+<script src="{% static 'js/custom.js' %}"></script>
+{% endblock js_files %}
+{% block extra_js %}{% endblock extra_js %}
+</body>
+<!-- homev207:28-->
+</html>
